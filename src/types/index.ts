@@ -190,3 +190,23 @@ export interface ProposeProposalParams extends Proposal {
     chain: SupportedChain;
     governor: Address;
 }
+
+// Mento types
+export type MentoOperation = "quote" | "approve" | "swap";
+
+export interface MentoParams {
+    operation: MentoOperation;
+    chain: SupportedChain;
+    fromToken: Address;
+    toToken: Address;
+    amount: string; 
+    slippage: number;
+}
+
+export interface MentoQuoteResult {
+    fromAmount: bigint;
+    toAmount: bigint;
+    minToAmount: bigint; // Amount after slippage
+    fromToken: Address;
+    toToken: Address;
+}
